@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_baseline_rate_review_24"
+        android:title="@string/title_review" />
+
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@drawable/ic_baseline_restaurant_menu_24"
+        android:title="@string/menu" />
+
+</menu>
