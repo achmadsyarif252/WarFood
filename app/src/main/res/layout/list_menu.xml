@@ -37,12 +37,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:text="$5"
             android:textColor="@color/purple_700"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:text="$5" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvDesc"
@@ -51,11 +51,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:maxLines="2"
+            android:text="Lorem ipsum dolorem sit amet lorem ipsum"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivSample"
-            app:layout_constraintTop_toBottomOf="@id/tvFood"
-            app:text="Lorem ipsum dolorem sit amet lorem ipsum" />
+            app:layout_constraintTop_toBottomOf="@id/tvFood" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
