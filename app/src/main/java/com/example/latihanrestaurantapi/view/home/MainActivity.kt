@@ -1,4 +1,4 @@
-package com.example.latihanrestaurantapi
+package com.example.latihanrestaurantapi.view.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

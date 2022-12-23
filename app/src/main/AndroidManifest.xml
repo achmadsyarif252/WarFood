@@ -15,14 +15,14 @@
         android:theme="@style/Theme.LatihanRestaurantAPI"
         tools:targetApi="31">
         <activity
-            android:name=".DetailRestaurant"
+            android:name=".view.detail.DetailRestaurant"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.home.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

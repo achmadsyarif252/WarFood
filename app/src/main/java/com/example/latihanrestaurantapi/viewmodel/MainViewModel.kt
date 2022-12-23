@@ -1,11 +1,10 @@
 package com.example.latihanrestaurantapi.viewmodel
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.latihanrestaurantapi.HomeReviewFragment
+import com.example.latihanrestaurantapi.view.detail.HomeReviewFragment
 import com.example.latihanrestaurantapi.retrofit.api.ApiConfig
 import com.example.latihanrestaurantapi.retrofit.response.*
 import retrofit2.Call

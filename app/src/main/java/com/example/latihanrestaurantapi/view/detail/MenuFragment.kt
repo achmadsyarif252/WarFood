@@ -1,4 +1,4 @@
-package com.example.latihanrestaurantapi
+package com.example.latihanrestaurantapi.view.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

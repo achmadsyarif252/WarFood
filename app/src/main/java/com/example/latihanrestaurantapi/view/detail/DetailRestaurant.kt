@@ -1,4 +1,4 @@
-package com.example.latihanrestaurantapi
+package com.example.latihanrestaurantapi.view.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.latihanrestaurantapi.R
 import com.example.latihanrestaurantapi.databinding.ActivityDetailRestaurantBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

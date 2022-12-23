@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.latihanrestaurantapi.HomeReviewFragment"
+        android:name="com.example.latihanrestaurantapi.view.detail.HomeReviewFragment"
         android:label="@string/title_review"
         tools:layout="@layout/fragment_home_review" />
 
     <fragment
         android:id="@+id/navigation_menu"
-        android:name="com.example.latihanrestaurantapi.MenuFragment"
+        android:name="com.example.latihanrestaurantapi.view.detail.MenuFragment"
         android:label="@string/title_menu"
         tools:layout="@layout/fragment_menu" />
 

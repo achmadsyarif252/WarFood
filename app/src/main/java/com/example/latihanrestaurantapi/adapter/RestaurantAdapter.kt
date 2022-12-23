@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.example.latihanrestaurantapi.DetailRestaurant
-import com.example.latihanrestaurantapi.HomeReviewFragment
+import com.example.latihanrestaurantapi.view.detail.DetailRestaurant
+import com.example.latihanrestaurantapi.view.detail.HomeReviewFragment
 import com.example.latihanrestaurantapi.databinding.ItemRestaurantBinding
 import com.example.latihanrestaurantapi.retrofit.response.RestaurantsItem
 
