@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -13,74 +14,52 @@ import com.example.latihanrestaurantapi.adapter.ReviewAdapter
 import com.example.latihanrestaurantapi.databinding.FragmentHomeReviewBinding
 import com.example.latihanrestaurantapi.retrofit.api.ApiConfig
 import com.example.latihanrestaurantapi.retrofit.response.*
+import com.example.latihanrestaurantapi.viewmodel.MainViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class HomeReviewFragment : Fragment() {
     private lateinit var binding: FragmentHomeReviewBinding
+    private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeReviewBinding.inflate(inflater, container, false)
+        mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        getRestaurantDetail()
+        mainViewModel.getRestaurantDetail()
+
+        mainViewModel.restaurantDetail.observe(viewLifecycleOwner) {
+            populateView(it)
+        }
+
+        mainViewModel.customerReview.observe(viewLifecycleOwner) {
+            populateReview(it)
+        }
+
+        mainViewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+
         binding.btnSend.setOnClickListener {
-            if (binding.edtReview.text.toString().isNotEmpty()) {
-                val client = ApiConfig.getApiService()
-                    .postReview(idRestaurant, "Achmad Syarif", binding.edtReview.text.toString())
-
-                client.enqueue(object : Callback<PostReviewResponse> {
-                    override fun onFailure(call: Call<PostReviewResponse>, t: Throwable) {
-                        Log.e(TAG, "onFailure: ${t.message.toString()}")
-                    }
-
-                    override fun onResponse(
-                        call: Call<PostReviewResponse>,
-                        response: Response<PostReviewResponse>
-                    ) {
-
-                        if (response.isSuccessful) {
-                            val responseBody = response.body()
-                            if (responseBody != null) {
-                                populateReview(responseBody.customerReviews as List<CustomerReviewsItem>)
-                            }
-                        }
-                    }
-                })
-            } else {
-                binding.edtReview.error = "Field ini masih kosong"
-            }
+            sendReview()
         }
         return binding.root
     }
 
-    private fun getRestaurantDetail() {
-        binding.progressBar.visibility = View.VISIBLE
-        val client = ApiConfig.getApiService().getDetailRestaurant(idRestaurant)
-        client.enqueue(object : Callback<DetailRestaurantResponse> {
-            override fun onFailure(call: Call<DetailRestaurantResponse>, t: Throwable) {
-                binding.progressBar.visibility = View.GONE
-                Log.e(TAG, "onFailure: ${t.message}")
-            }
+    private fun sendReview() {
+        if (binding.edtReview.text.toString().isNotEmpty()) {
+            mainViewModel.sendReview(binding.edtReview.text.toString())
+        } else {
+            binding.edtReview.error = "Field ini masih kosong"
+        }
+    }
 
-            override fun onResponse(
-                call: Call<DetailRestaurantResponse>,
-                response: Response<DetailRestaurantResponse>
-            ) {
-                binding.progressBar.visibility = View.GONE
-                if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        populateView(responseBody.restaurant)
-                    }
-                } else {
-                    Log.e(TAG, "onResponse: ${response.message()}")
-                }
-            }
-        })
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun populateView(restaurant: Restaurant) {
